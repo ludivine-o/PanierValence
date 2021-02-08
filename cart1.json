@@ -1,0 +1,85 @@
+{"cart": {
+  "id": "6000dbd9-cb49-4066-820e-2d95cb1e228z",
+  "status": "COMPLETE",
+  "weightUnit": "LB",
+  "currency":   {
+    "code": "USD",
+    "symbol": "$"
+  },
+  "convertedCurrency":   {
+    "code": "USD",
+    "symbol": "$"
+  },
+  "billingAddress":   {
+    "address":     {
+      "country": "US",
+      "city": "New York",
+      "postalCode": "10001",
+      "addressLine": "123123"
+    },
+    "contactDetails":     {
+      "firstName": "John",
+      "lastName": "Doe",
+      "phone": "0548799654",
+      "email": "johndoe@anydomain.com"
+    }
+  },
+  "totals":   {
+    "subtotal": 50,
+    "shipping": 0,
+    "tax": 0,
+    "discount": 0,
+    "total": 50,
+    "weight": 0,
+    "quantity": 2
+  },
+  "convertedTotals":   {
+    "subtotal": 50,
+    "shipping": 0,
+    "tax": 0,
+    "discount": 0,
+    "total": 50,
+    "weight": 0,
+    "quantity": 2
+  },
+  "shippingInfo": {"shippingAddress":   {
+    "address":     {
+      "country": "US",
+      "city": "New York",
+      "postalCode": "10001",
+      "addressLine": "123123"
+    },
+    "contactDetails":     {
+      "firstName": "John",
+      "lastName": "Doe",
+      "phone": "0548799654",
+      "email": "johndoe@anydomain.com"
+    }
+  }},
+  "buyerInfo":   {
+    "id": "d24e958a-85f7-4bea-1f75-4d7678a42019",
+    "identityType": "MEMBER",
+    "email": "johndoe@anydomain.com",
+    "phone": "0548799654",
+    "firstName": "John",
+    "lastName": "Doe"
+  },
+  "lineItems": [  {
+    "quantity": 2,
+    "price": "10.00",
+    "name": "GogoGadget",
+    "productId": "d956c56d89",
+    "totalPrice": 20.00,
+    "lineItemType": "DIGITAL",
+    "customTextFields": ["bob"],
+    "mediaItem":     {
+      "mediaType": "IMAGE",
+      "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",
+      "width": 322,
+      "height": 322
+    },
+    "sku": "5678",
+    "options": [],
+    "id": 1
+  }]
+}}
