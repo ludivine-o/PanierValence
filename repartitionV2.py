@@ -103,6 +103,7 @@ def get_json_file_repartition(list_repartition, cart_id):
     json_name = 'result_repartition' + cart_id + '.json'
     with open(json_name, 'w') as json_result:
         json.dump(json_data, json_result)
+    return json_data
 
 
 def repartition(json_file_name):

@@ -1,5 +1,5 @@
 {"cart": {
-  "id": "6000dbd9-cb49-4066-820e-2d95cb1e228z",
+  "id": "6000dbd9-cb49-4066-820e-2d95cb1cart1",
   "status": "COMPLETE",
   "weightUnit": "LB",
   "currency":   {
@@ -81,5 +81,41 @@
     "sku": "5678",
     "options": [],
     "id": 1
+  },
+  {
+    "quantity": 2,
+    "price": "25.00",
+    "name": "GadgetAuBras",
+    "productId": "d956c56d88",
+    "totalPrice": 50000.00,
+    "lineItemType": "DIGITAL",
+    "customTextFields": ["bob"],
+    "mediaItem":     {
+      "mediaType": "IMAGE",
+      "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",
+      "width": 322,
+      "height": 322
+    },
+    "sku": "5678",
+    "options": [],
+    "id": 2
+  },
+  {
+    "quantity": 2,
+    "price": "25.00",
+    "name": "GadgetAuPied",
+    "productId": "d956c56d88",
+    "totalPrice": 5000.00,
+    "lineItemType": "DIGITAL",
+    "customTextFields": ["FOO"],
+    "mediaItem":     {
+      "mediaType": "IMAGE",
+      "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",
+      "width": 322,
+      "height": 322
+    },
+    "sku": "5678",
+    "options": [],
+    "id": 3
   }]
 }}
