@@ -1,14 +1,16 @@
 import json
 
 
+
 # classe represetant un article du panier
 class Article:
 
-    def __init__(self, id, name, price, retailer):
+    def __init__(self, id, name, price, retailer_name, retailer_loc):
         self.nom = name
         self.id = id
         self.price = price
-        self.retailer = retailer
+        self.retailer_name = retailer_name
+        self.retailer_loc = retailer_loc
 
     def get_price(self):
         return self.price
@@ -19,8 +21,11 @@ class Article:
     def get_id(self):
         return self.id
 
-    def get_retailer(self):
-        return self.retailer
+    def get_retailer_name(self):
+        return self.retailer_name
+
+    def get_retailer_loc(self):
+        return self.retailer_loc
 
     def to_string(self):
         string = 'Designation : ' + self.nom + ',  prix : ' + str(self.price)
@@ -30,9 +35,16 @@ class Article:
 # classe represetant un commercant dont au moins un article est dans le panier
 class Retailer:
 
-    def __init__(self, name, total):
+    def __init__(self, name, total, location):
         self.name = name
         self.total = total
+        self.location = location
+
+    def get_name(self):
+        return self.name
+
+    def get_loc(self):
+        return self.location
 
     def get_total(self):
         return self.total
@@ -59,12 +71,14 @@ def get_list_item_from_json(fileJson):
         data = json.load(file)
         for item in data['cart']['lineItems']:
             total_price = item['totalPrice']
-            id_retailer = item['customTextFields']
+            id_retailer = item['customTextFields'][0]
+            retailer_location = item['customTextFields'][1]
             id_article = item['id']
             name_article = item['name']
-            article = Article(id_article, name_article, total_price, id_retailer[0])
+            article = Article(id_article, name_article, total_price, id_retailer, retailer_location)
             item_list.append(article)
         return item_list
+
 
 # Fonction qui récupere l'ID du cart traité
 def get_id_cart_from_json(fileJson):
@@ -74,16 +88,16 @@ def get_id_cart_from_json(fileJson):
         cart_id = data['cart']['id']
         return cart_id
 
+
 # Fonction qui crée une liste un commercant dont au moins un article est dans le panier
 def get_repartition(items):
     results = []
     for article in items:
-        retail = article.get_retailer()
+        retailer_name = article.get_retailer_name()
         totalPrice = article.get_price()
-        current_retailer = Retailer(retail, totalPrice)
-
+        retailer_location = article.get_retailer_loc()
+        current_retailer = Retailer(retailer_name, totalPrice, retailer_location)
         is_existant_in_list = False
-
         for existing_retailer in results:
             if current_retailer.__eq__(existing_retailer):
                 is_existant_in_list = True
@@ -94,16 +108,27 @@ def get_repartition(items):
 
 
 def get_json_file_repartition(list_repartition, cart_id):
-    json_data = ''
+    json_data_retailer_repartition = ''
     for object in list_repartition:
-        json_str = json.dumps(object.__dict__)
-        #print(json_str)
-        json_data = json_data + json_str
-        #print(json_data)
-    json_name = 'result_repartition' + cart_id + '.json'
-    with open(json_name, 'w') as json_result:
-        json.dump(json_data, json_result)
-    return json_data
+        json_str_retailer_name = json.dumps(object.__dict__)
+        json_data_retailer_repartition = json_data_retailer_repartition + json_str_retailer_name
+    json_name_repartition = 'result_repartition' + cart_id + '.json'
+    with open(json_name_repartition, 'w') as json_result:
+        json.dump(json_data_retailer_repartition, json_result)
+    return json_data_retailer_repartition
+
+
+def send_data_location(list_repartition, cart_id):
+    location_list = []
+    for retailer in list_repartition:
+        new_location = retailer.get_loc()
+        new_retailer = retailer.get_name()
+        location_list.append([new_retailer, new_location])
+    json_name_location = 'result_location' + cart_id + '.json'
+    with open(json_name_location, 'w') as json_result:
+        json.dump(location_list, json_result)
+    print(location_list)
+    return location_list
 
 
 def repartition(json_file_name):
@@ -111,9 +136,10 @@ def repartition(json_file_name):
     retailers_list = get_repartition(item_list)
     cart_id = get_id_cart_from_json(json_file_name)
     get_json_file_repartition(retailers_list, cart_id)
+    send_data_location(retailers_list, cart_id)
 
 if __name__ == '__main__':
-    repartition('cart3.json')
+    repartition('data/cart2.json')
 
 
 
