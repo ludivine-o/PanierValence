@@ -1,8 +1,10 @@
 import requests
 import json
 
+#TODO : Faire un truc avec les infos retournées par l'API : un mail, un lien, un fichier (txt, pdf)
 
-def test():
+def get_route_informations():
+    #TODO : utiliser un fichier json en param, et ecrire un truc pour le jsonifier
     key = '1sAIpH7ZQ8EPzzLg8SeAfjtDsKAfhubd'
     origine = '3 Grande Rue, Valence, FR'
     dest = '10 rue Faventines, Valence, FR'
@@ -38,4 +40,4 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    get_route_informations()
