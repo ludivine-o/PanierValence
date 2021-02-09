@@ -1,16 +1,16 @@
 {
   "cart": {
-    "id": "ID order : test bob cdes1/2/3/4/5=150e, tonton cdes6/7=130e, phil cdes8/9/10=270e",
+    "id": "ID order",
     "lineItems": [
-      {"totalPrice": 10, "customTextFields": ["bob"], "id": 1, "name": "bob 10e"},
-      {"totalPrice": 20, "customTextFields": ["bob"], "id": 2, "name": "bob 20e"},
-      {"totalPrice": 30, "customTextFields": ["bob"], "id": 3, "name": "bob 30e"},
-      {"totalPrice": 40, "customTextFields": ["bob"], "id": 4, "name": "bob 40e"},
-      {"totalPrice": 50, "customTextFields": ["bob"], "id": 5, "name": "bob 50e"},
-      {"totalPrice": 60, "customTextFields": ["tonton"], "id": 6, "name": "tonton 60e"},
-      {"totalPrice": 70, "customTextFields": ["tonton"], "id": 7, "name": "tonton 70e"},
-      {"totalPrice": 80, "customTextFields": ["philiiiiippe !"], "id": 8, "name": "phil 80e"},
-      {"totalPrice": 90, "customTextFields": ["philiiiiippe !"], "id": 9, "name": "phil 90e"},
-      {"totalPrice": 100, "customTextFields": ["philiiiiippe !"], "id": 10, "name": "phil 100e"}
+      {"totalPrice": 10, "customTextFields": ["bob", "adresse de bob"], "id": 1, "name": "bob 10e"},
+      {"totalPrice": 20, "customTextFields": ["bob", "adresse de bob"], "id": 2, "name": "bob 20e"},
+      {"totalPrice": 30, "customTextFields": ["bob", "adresse de bob"], "id": 3, "name": "bob 30e"},
+      {"totalPrice": 40, "customTextFields": ["bob", "adresse de bob"], "id": 4, "name": "bob 40e"},
+      {"totalPrice": 50, "customTextFields": ["bob", "adresse de bob"], "id": 5, "name": "bob 50e"},
+      {"totalPrice": 60, "customTextFields": ["tonton", "adresse de tonton"], "id": 6, "name": "tonton 60e"},
+      {"totalPrice": 70, "customTextFields": ["tonton", "adresse de tonton"], "id": 7, "name": "tonton 70e"},
+      {"totalPrice": 80, "customTextFields": ["philiiiiippe !", "adresse de philiiiiippe !"], "id": 8, "name": "phil 80e"},
+      {"totalPrice": 90, "customTextFields": ["philiiiiippe !", "adresse de philiiiiippe !"], "id": 9, "name": "phil 90e"},
+      {"totalPrice": 100, "customTextFields": ["philiiiiippe !", "adresse de philiiiiippe !"], "id": 10, "name": "phil 100e"}
     ]
 }}

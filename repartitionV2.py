@@ -104,6 +104,7 @@ def get_repartition(items):
                 existing_retailer.add_to_total(current_retailer.get_total())
         if not is_existant_in_list:
             results.append(current_retailer)
+    print(results)
     return results
 
 
