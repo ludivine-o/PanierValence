@@ -1,7 +1,6 @@
 import json
 
 
-
 # classe represetant un article du panier
 class Article:
 
