@@ -69,7 +69,7 @@
     "price": "15.00",
     "name": "Psychotria elata",
     "productId": "d956c56d89",
-    "totalPrice": 20.00,
+    "totalPrice": 30.00,
     "lineItemType": "DIGITAL",
     "customTextFields": ["Fleuriste Vert Tige", "3 Place Championnet, 26000 Valence, FR"],
     "mediaItem":     {
@@ -87,7 +87,7 @@
     "price": "15.00",
     "name": "Bouquet de Six-Roses",
     "productId": "d956c56d88",
-    "totalPrice": 50000.00,
+    "totalPrice": 30.00,
     "lineItemType": "DIGITAL",
     "customTextFields": ["Fleuriste Vert Tige", "3 Place Championnet, 26000 Valence, FR"],
     "mediaItem":     {
@@ -105,7 +105,7 @@
     "price": "2.00",
     "name": "Quetches",
     "productId": "d956c56d88",
-    "totalPrice": 5000.00,
+    "totalPrice": 20.00,
     "lineItemType": "DIGITAL",
     "customTextFields": ["Primeur Patousouite", "9 Rue de l'Université, 26000 Valence, France, FR"],
     "mediaItem":     {
