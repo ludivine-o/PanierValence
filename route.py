@@ -1,7 +1,6 @@
 import os
 import webbrowser
-from pprint import pprint
-
+from jinja2 import Environment, FileSystemLoader
 import jinja2
 import requests
 import json
@@ -171,28 +170,30 @@ def generate_html(liste_comm_obj_coord, url):
     webbrowser.open_new_tab(filename)
 
 
-if __name__ == '__main__':
-    origin_mairie_valence = 44.9331614,4.892158
-    # liste_test = ['3 Grande Rue, Valence, FR', '10 rue Faventines, Valence, FR', '58 avenue Victor Hugo, Carpentras, FR']
-    # get_route_informations(liste_test)
-    # get_list_addresses_coord()
-    # london_coord = 51.5073219, -0.1276474
-    # cities = {
-    #     'berlin': (52.5170365, 13.3888599),
-    #     'vienna': (48.2083537, 16.3725042),
-    #     'sydney': (-33.8548157, 151.2164539),
-    #     'madrid': (40.4167047, -3.7035825)
-    # }
-    # for city, coord in cities.items():
-    #     distance = calcul_distance(london_coord, coord)
-    #     print(city, distance)
+def generate_html_v2(liste_comm_obj_coord, url):
+    file_loader = FileSystemLoader('templates')
+    env = Environment(loader=file_loader)
+    env.trim_blocks = True
+    env.lstrip_blocks = True
+    env.rstrip_blocks = True
+    template = env.get_template('result.template.html')
+    output = template.render(list=liste_comm_obj_coord, url=url)
+    file = open("test.html", "w")
+    file.write(output)
+    file.close()
+    webbrowser.open_new_tab("test.html")
 
+def la_fonction_qui_fait_tout():
     list_obj_commercant = get_data_from_json_file()
     get_route_informations(list_obj_commercant)
     list_obj_commercant = get_list_addresses_coord(list_obj_commercant)
     list_obj_commercant = tri_par_distance(list_obj_commercant)
-    print(get_map_url(list_obj_commercant))
     generate_txt(list_obj_commercant, get_map_url(list_obj_commercant))
-    generate_html(list_obj_commercant, get_map_url(list_obj_commercant))
+    # generate_html(list_obj_commercant, get_map_url(list_obj_commercant))
+    generate_html_v2(list_obj_commercant, get_map_url(list_obj_commercant))
+
+
+if __name__ == '__main__':
+    la_fonction_qui_fait_tout()
 
 
