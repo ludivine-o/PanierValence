@@ -112,7 +112,8 @@ def get_json_file_repartition(list_repartition, cart_id):
     for object in list_repartition:
         json_str_retailer_name = json.dumps(object.__dict__)
         json_data_retailer_repartition = json_data_retailer_repartition + json_str_retailer_name
-    json_name_repartition = 'result_repartition' + cart_id + '.json'
+    # json_name_repartition = 'result_repartition' + cart_id + '.json'
+    json_name_repartition = 'result_repartition.json'
     with open(json_name_repartition, 'w') as json_result:
         json.dump(json_data_retailer_repartition, json_result)
     return json_data_retailer_repartition
@@ -124,7 +125,8 @@ def send_data_location(list_repartition, cart_id):
         new_location = retailer.get_loc()
         new_retailer = retailer.get_name()
         location_list.append([new_retailer, new_location])
-    json_name_location = 'result_location' + cart_id + '.json'
+    # json_name_location = 'result_location' + cart_id + '.json'
+    json_name_location = 'result_location.json'
     with open(json_name_location, 'w') as json_result:
         json.dump(location_list, json_result)
     print(location_list)
