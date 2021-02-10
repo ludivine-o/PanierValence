@@ -65,13 +65,13 @@
     "lastName": "Doe"
   },
   "lineItems": [  {
-    "quantity": 2,
-    "price": "10.00",
-    "name": "GogoGadget",
+    "quantity": 1,
+    "price": "300.00",
+    "name": "Rob the Robot",
     "productId": "d956c56d89",
-    "totalPrice": 20.00,
+    "totalPrice": 300.00,
     "lineItemType": "DIGITAL",
-    "customTextFields": ["BA", "14 Place des Clercs, 26000 VALENCE"],
+    "customTextFields": ["Chez Mario le Mariole", "10 Rue Lieutenant Bonaparte, 26000 Valence, FR"],
     "mediaItem":     {
       "mediaType": "IMAGE",
       "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",
@@ -84,12 +84,12 @@
   },
   {
     "quantity": 2,
-    "price": "25.00",
-    "name": "GadgetAuBras",
+    "price": "200.00",
+    "name": "Dr Martens",
     "productId": "d956c56d88",
-    "totalPrice": 20.00,
+    "totalPrice": 400.00,
     "lineItemType": "DIGITAL",
-    "customTextFields": ["bob", "3 Grande Rue, 26000 VALENCE"],
+    "customTextFields": ["Chaussures & Certain", "27 Avenue Victor Hugo, 26000 Valence, FR"],
     "mediaItem":     {
       "mediaType": "IMAGE",
       "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",
@@ -101,13 +101,13 @@
     "id": 2
   },
   {
-    "quantity": 2,
-    "price": "25.00",
-    "name": "GadgetAuPied",
+    "quantity": 5,
+    "price": "75.00",
+    "name": "Tête de veau",
     "productId": "d956c56d88",
-    "totalPrice": 159.00,
+    "totalPrice": 375.00,
     "lineItemType": "DIGITAL",
-    "customTextFields": ["FOO", "1 rue quincampoix, 75012 PARIS"],
+    "customTextFields": ["Boucherie Sanzot", "Place de la Liberté, 26000 Valence, FR"],
     "mediaItem":     {
       "mediaType": "IMAGE",
       "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",
