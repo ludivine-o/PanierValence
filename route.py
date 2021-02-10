@@ -1,7 +1,13 @@
+import os
+import webbrowser
+from pprint import pprint
+
+import jinja2
 import requests
 import json
 import math
-import itertools
+
+import weasyprint
 
 
 class Commerce:
@@ -35,7 +41,7 @@ class Commerce:
         self.y = y
 
     def to_string(self):
-        return "je suis "+self.nom+" et mes coord sont : "+str(self.x) +" "+ str(self.y)
+        return "je suis "+self.nom+" et ma distance du dépot est de : "+str(round(self.distance))
 
 
 # retourne une liste d'objet de type Commercant
@@ -73,33 +79,26 @@ def get_route_informations(commerce_list):
 }
     # response = requests.get('http://www.mapquestapi.com/directions/v2/route?key='+key+'&from=from='+origine+'&to='+dest+'&outFormat=json&ambiguities=ignore&routeType=fastest&doReverseGeocode=false&enhancedNarrative=false&avoidTimedConditions=false')
     response = requests.post('http://www.mapquestapi.com/directions/v2/optimizedroute?key='+key, json.dumps(json_data))
-    print(response.json())
     json_name_route = 'result_route.json'
     with open(json_name_route, 'w') as json_result:
         json.dump(response.json(), json_result)
 
 #utilise le JSOn de l'API pour ajouter les coord à la liste d'objet Commercant
 def get_list_addresses_coord(liste_commercant):
+
     with open('result_route.json') as file:
         data = json.load(file)
         for (item, commercant) in zip(data['route']['locations'], liste_commercant):
             lng = item['displayLatLng']['lng']
             lat = item['displayLatLng']['lat']
-            street = item['street']
-            print(lat, lng, street)
+            coord = lat, lng
             commercant.set_coord(lng, lat)
-            print(commercant.to_string())
+        return liste_commercant
 
 
-
-
-
-    return 0
-
-
-def calcul_distance(coord1, coord2):
+def calcul_distance(origine, coord2):
     R = 6372800  # Earth radius in meters
-    lat1, lon1 = coord1
+    lat1, lon1 = origine
     lat2, lon2 = coord2
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
     dphi = math.radians(lat2 - lat1)
@@ -109,14 +108,71 @@ def calcul_distance(coord1, coord2):
     return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
-def tri_distance(liste_adress_coord):
-    return 0
+def tri_par_distance(liste_obj_commercant_coord):
+    origin_mairie_valence = 44.9331614, 4.892158
+    for commerce in liste_obj_commercant_coord:
+        coord = commerce.get_y(), commerce.get_x()
+        dist = calcul_distance(origin_mairie_valence, coord)
+        commerce.set_dist(dist)
+    liste_obj_commercant_coord =  sorted(liste_obj_commercant_coord, key=lambda commerce : commerce.distance)
+    return liste_obj_commercant_coord
 
-def get_map_url():
-    return 0
+def get_map_url(liste_obj_commercant_coord):
+    compteur_q = 1
+    url = 'http://www.mapquest.com/embed?'
+    for commerce in liste_obj_commercant_coord:
+        if compteur_q == 1:
+            url += 'q1='
+        else:
+            to_add = '&q' + str(compteur_q) +'='
+            url += to_add
+        url += commerce.get_adr()
+        compteur_q += 1
+    url += '&maptype=map'
+    # url = 'http://www.mapquest.com/embed?q1='+ adress1 +'&q2='+adress2+'&q3='+adress3+'&maptype=map'
+    # url = http://www.mapquest.com/embed?q1=Place de la Concorde, paris, FR&q2=promenade des anglais, nice, FR&q3=Place Bellecour, Lyon, FR&maptype=map
+    return url
+
+def generate_txt(liste_comm_obj_coord, url):
+    fichier = open("itineraire.txt", "w")
+    str = set_txt(liste_comm_obj_coord)
+    fichier.write("\nItineraire\n"+ str + "\nlien vers mapquest : \n" + url)
+    fichier.close()
+
+def set_txt(liste_comm_obj_coord):
+    str = ""
+    for comm in liste_comm_obj_coord:
+        str += ("Commerce : "+comm.get_nom()+' , '+comm.get_adr()+", \n")
+    return str
+
+def generate_html(liste_comm_obj_coord, url):
+    str = set_txt(liste_comm_obj_coord)
+    table = ['tata', 'tutu', 'toto']
+    text = '''
+    <html>
+        <header>
+            <img src="data/logo.png">
+        <body>
+            <h1>Liste des commercants : </h1>
+            <ul>
+                <li>{}</li>
+                <li>{}</li>
+                <li>{}</li>
+            </ul>
+            <h3><a href="{}" target="_blank">Lien vers l'itineraire sur MapQuest</a></h3>
+            
+        </body>
+    </html>
+    '''.format(table[0], table[1], table[2], url)
+    file = open("itineraire.html", "w")
+    file.write(text)
+    file.close()
+    filename = 'file:///' + os.getcwd() + '/' + 'itineraire.html'
+    webbrowser.open_new_tab(filename)
 
 
 if __name__ == '__main__':
+    origin_mairie_valence = 44.9331614,4.892158
     # liste_test = ['3 Grande Rue, Valence, FR', '10 rue Faventines, Valence, FR', '58 avenue Victor Hugo, Carpentras, FR']
     # get_route_informations(liste_test)
     # get_list_addresses_coord()
@@ -134,7 +190,9 @@ if __name__ == '__main__':
     list_obj_commercant = get_data_from_json_file()
     get_route_informations(list_obj_commercant)
     list_obj_commercant = get_list_addresses_coord(list_obj_commercant)
-
-
+    list_obj_commercant = tri_par_distance(list_obj_commercant)
+    print(get_map_url(list_obj_commercant))
+    generate_txt(list_obj_commercant, get_map_url(list_obj_commercant))
+    generate_html(list_obj_commercant, get_map_url(list_obj_commercant))
 
 

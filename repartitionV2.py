@@ -103,7 +103,7 @@ def get_repartition(items):
                 existing_retailer.add_to_total(current_retailer.get_total())
         if not is_existant_in_list:
             results.append(current_retailer)
-    print(results)
+    # print(results)
     return results
 
 
@@ -132,7 +132,7 @@ def send_data_location(list_repartition, cart_id):
     print(location_list)
     return location_list
 
-
+#Reprends toutes les fonctions à appeler pour
 def repartition(json_file_name):
     item_list = get_list_item_from_json(json_file_name)
     retailers_list = get_repartition(item_list)

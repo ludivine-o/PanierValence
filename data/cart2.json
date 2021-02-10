@@ -71,7 +71,7 @@
     "productId": "d956c56d89",
     "totalPrice": 20.00,
     "lineItemType": "DIGITAL",
-    "customTextFields": ["bob", "3 Grande Rue, 26000 VALENCE"],
+    "customTextFields": ["BA", "14 Place des Clercs, 26000 VALENCE"],
     "mediaItem":     {
       "mediaType": "IMAGE",
       "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",
