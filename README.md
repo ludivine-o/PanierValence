@@ -15,4 +15,5 @@ le fichier répartition  :
   
 le fichier route : 
 
-  -il recupere le fichier JSON qui contient les adresses et établi un itinéraire ( TODO on est en train de le faire cette partie sera modifié)
+  -il recupere le fichier JSON qui contient les adresses et établi un itinéraire via L'API MapQuest qui nous renvoie les coordonnées qui sont trié en fonction de la distance puis 
+   affiche sur une carte l'itinéraire 
