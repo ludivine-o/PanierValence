@@ -140,8 +140,8 @@ def repartition(json_file_name):
     get_json_file_repartition(retailers_list, cart_id)
     send_data_location(retailers_list, cart_id)
 
-if __name__ == '__main__':
-    repartition('data/cart2.json')
+# if __name__ == '__main__':
+#     repartition('data/cart2.json')
 
 
 

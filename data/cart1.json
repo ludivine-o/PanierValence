@@ -107,7 +107,7 @@
     "productId": "d956c56d88",
     "totalPrice": 20.00,
     "lineItemType": "DIGITAL",
-    "customTextFields": ["Primeur Patousouite", "9 Rue de l'Université, 26000 Valence, France, FR"],
+    "customTextFields": ["Primeur Patousouite", "1 place des clercs, 26000 Valence, FR"],
     "mediaItem":     {
       "mediaType": "IMAGE",
       "url": "https://static.wixstatic.com/media/8ed856_a70af7fc0eca9f1ab5b5c966b5274b79~mv2.gif/v1/fit/w_322,h_322,q_90/file.webp",

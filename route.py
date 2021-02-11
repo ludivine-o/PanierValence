@@ -81,10 +81,12 @@ def get_route_informations(commerce_list):
     json_name_route = 'result_route.json'
     with open(json_name_route, 'w') as json_result:
         json.dump(response.json(), json_result)
+        print(response.json())
+        return response
+
 
 #utilise le JSOn de l'API pour ajouter les coord à la liste d'objet Commercant
 def get_list_addresses_coord(liste_commercant):
-
     with open('result_route.json') as file:
         data = json.load(file)
         for (item, commercant) in zip(data['route']['locations'], liste_commercant):
@@ -116,6 +118,7 @@ def tri_par_distance(liste_obj_commercant_coord):
     liste_obj_commercant_coord =  sorted(liste_obj_commercant_coord, key=lambda commerce : commerce.distance)
     return liste_obj_commercant_coord
 
+#Fonction qui crée un lien d'itineraire grace à une liste d'objet commerce dont les coord ont été set.
 def get_map_url(liste_obj_commercant_coord):
     compteur_q = 1
     url = 'http://www.mapquest.com/embed?'
@@ -144,30 +147,30 @@ def set_txt(liste_comm_obj_coord):
         str += ("Commerce : "+comm.get_nom()+' , '+comm.get_adr()+", \n")
     return str
 
-def generate_html(liste_comm_obj_coord, url):
-    str = set_txt(liste_comm_obj_coord)
-    table = ['tata', 'tutu', 'toto']
-    text = '''
-    <html>
-        <header>
-            <img src="data/logo.png">
-        <body>
-            <h1>Liste des commercants : </h1>
-            <ul>
-                <li>{}</li>
-                <li>{}</li>
-                <li>{}</li>
-            </ul>
-            <h3><a href="{}" target="_blank">Lien vers l'itineraire sur MapQuest</a></h3>
-            
-        </body>
-    </html>
-    '''.format(table[0], table[1], table[2], url)
-    file = open("itineraire.html", "w")
-    file.write(text)
-    file.close()
-    filename = 'file:///' + os.getcwd() + '/' + 'itineraire.html'
-    webbrowser.open_new_tab(filename)
+# def generate_html(liste_comm_obj_coord, url):
+#     str = set_txt(liste_comm_obj_coord)
+#     table = ['tata', 'tutu', 'toto']
+#     text = '''
+#     <html>
+#         <header>
+#             <img src="data/logo.png">
+#         <body>
+#             <h1>Liste des commercants : </h1>
+#             <ul>
+#                 <li>{}</li>
+#                 <li>{}</li>
+#                 <li>{}</li>
+#             </ul>
+#             <h3><a href="{}" target="_blank">Lien vers l'itineraire sur MapQuest</a></h3>
+#
+#         </body>
+#     </html>
+#     '''.format(table[0], table[1], table[2], url)
+#     file = open("itineraire.html", "w")
+#     file.write(text)
+#     file.close()
+#     filename = 'file:///' + os.getcwd() + '/' + 'itineraire.html'
+#     webbrowser.open_new_tab(filename)
 
 
 def generate_html_v2(liste_comm_obj_coord, url):
@@ -178,12 +181,12 @@ def generate_html_v2(liste_comm_obj_coord, url):
     env.rstrip_blocks = True
     template = env.get_template('result.template.html')
     output = template.render(list=liste_comm_obj_coord, url=url)
-    file = open("test.html", "w")
+    file = open("itineraire.html", "w")
     file.write(output)
     file.close()
-    webbrowser.open_new_tab("test.html")
+    webbrowser.open_new_tab("itineraire.html")
 
-def la_fonction_qui_fait_tout():
+def get_route():
     list_obj_commercant = get_data_from_json_file()
     get_route_informations(list_obj_commercant)
     list_obj_commercant = get_list_addresses_coord(list_obj_commercant)
@@ -193,7 +196,64 @@ def la_fonction_qui_fait_tout():
     generate_html_v2(list_obj_commercant, get_map_url(list_obj_commercant))
 
 
-if __name__ == '__main__':
-    la_fonction_qui_fait_tout()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

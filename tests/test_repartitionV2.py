@@ -2,6 +2,7 @@ from repartitionV2 import Article, Retailer, get_list_item_from_json, \
     get_json_file_repartition, get_repartition, get_id_cart_from_json, send_data_location
 
 
+
 def test_class_article():
     test_article = Article("id", "name", 12, "vendeur", "marignan 1515")
     assert test_article.get_id() == "id"
